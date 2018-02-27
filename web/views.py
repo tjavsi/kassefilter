@@ -72,13 +72,13 @@ class FilteredView(TemplateView):
             timetrials = response.read().decode('utf-8')
         timetrials = json.loads(timetrials)
         filtered_times = []
-        for timetrial in timetrials:
-            timetrial['beers'] = len(timetrial['durations'])
-            timetrial['sum_of_durations'] = sum(timetrial['durations'])
-            if not timetrial['residue'] is None:
-                if timetrial['residue'] <= timetrial['beers'] and \
-                        timetrial['result'] == 'f':
-                    filtered_times.append(timetrial)
+        for tt in timetrials:
+            tt['beers'] = len(tt['durations'])
+            tt['sum_of_durations'] = sum(tt['durations'])
+            if not tt['residue'] is None:
+                if tt['residue'] <= tt['beers'] and \
+                        tt['result'] == 'f':
+                    filtered_times.append(tt)
         filtered_times = sorted(sorted(filtered_times, key=operator.itemgetter('sum_of_durations')),
                             key=operator.itemgetter('beers'))
         context['filtered_times'] = filtered_times
