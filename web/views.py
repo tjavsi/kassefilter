@@ -71,15 +71,15 @@ class FilteredView(TemplateView):
         with urllib.request.urlopen("https://enkasseienfestforening.dk/timetrial/json/") as response:
             timetrials = response.read().decode('utf-8')
         timetrials = json.loads(timetrials)
-        real_times = []
+        filtered_times = []
         for timetrial in timetrials:
             timetrial['beers'] = len(timetrial['durations'])
             timetrial['sum_of_durations'] = sum(timetrial['durations'])
             if not timetrial['residue'] is None:
                 if timetrial['residue'] <= timetrial['beers'] and \
                         timetrial['result'] == 'f':
-                    real_times.append(timetrial)
-        real_times = sorted(sorted(real_times, key=operator.itemgetter('sum_of_durations')),
+                    filtered_times.append(timetrial)
+        filtered_times = sorted(sorted(filtered_times, key=operator.itemgetter('sum_of_durations')),
                             key=operator.itemgetter('beers'))
-        context['real_times'] = real_times
+        context['filtered_times'] = filtered_times
         return context

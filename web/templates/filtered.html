@@ -33,7 +33,7 @@
                 <th>Time</th>
             </thead>
             <tbody>
-            {% for timetrial in real_times %}
+            {% for timetrial in filtered_times %}
                 <tr>
                     <td><a href="https://tket.dk/5/{{ timetrial.id }}/" target="_blank">{{ timetrial.profile }}</a></td>
                     <td><a href="https://tket.dk/5/{{ timetrial.id }}/" target="_blank">{{ timetrial.start_time }}</a></td>
