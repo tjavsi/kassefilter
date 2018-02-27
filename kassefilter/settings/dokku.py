@@ -64,7 +64,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Europe/Copenhagen'
@@ -79,4 +78,4 @@ STATIC_URL = '/static/'
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
-STATIC_ROOT = os.path.join(BASE_DIR, '../../staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
